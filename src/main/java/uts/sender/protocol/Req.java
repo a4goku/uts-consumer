@@ -1,15 +1,14 @@
-package uts.consumer.protocol;
+package uts.sender.protocol;
 
 import java.io.Serializable;
 
-public class Resp implements Serializable {
+public class Req implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String id;
     private String type;
     private String tag;
-    private String responseCode;
-    private String responseMessage;
+    private String requestMessage;
 
     public String getId() {
         return id;
@@ -35,19 +34,11 @@ public class Resp implements Serializable {
         this.tag = tag;
     }
 
-    public String getResponseCode() {
-        return responseCode;
+    public String getRequestMessage() {
+        return requestMessage;
     }
 
-    public void setResponseCode(String responseCode) {
-        this.responseCode = responseCode;
-    }
-
-    public String getResponseMessage() {
-        return responseMessage;
-    }
-
-    public void setResponseMessage(String responseMessage) {
-        this.responseMessage = responseMessage;
+    public void setRequestMessage(String requestMessage) {
+        this.requestMessage = requestMessage;
     }
 }

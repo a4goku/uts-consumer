@@ -11,12 +11,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class NettyServer {
 
-    private static class SingletonHloder{
+    private static class SingletonHolder{
         static final NettyServer instance = new NettyServer();
     }
 
     public static NettyServer getInstance(){
-        return SingletonHloder.instance;
+        return SingletonHolder.instance;
     }
 
     private EventLoopGroup bossGroup;
@@ -38,8 +38,8 @@ public class NettyServer {
 
                     @Override
                     protected void initChannel(SocketChannel sc) throws Exception {
-                        sc.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
                         sc.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingEncoder());
+                        sc.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
                         sc.pipeline().addLast(new NettyServerHandler());
                     }
                 });

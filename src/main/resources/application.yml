@@ -23,7 +23,7 @@ druid:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 1234
-    initialSize: 50
+    initialSize: 5
     minIdle: 10
     maxActive: 500
     maxWait: 60000
@@ -44,7 +44,7 @@ druid:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 1234
-    initialSize: 50
+    initialSize: 5
     minIdle: 10
     maxActive: 500
     maxWait: 60000
@@ -65,7 +65,7 @@ druid:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 1234
-    initialSize: 50
+    initialSize: 5
     minIdle: 10
     maxActive: 500
     maxWait: 60000
@@ -86,7 +86,7 @@ druid:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 1234
-    initialSize: 50
+    initialSize: 5
     minIdle: 10
     maxActive: 500
     maxWait: 60000

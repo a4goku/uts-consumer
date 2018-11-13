@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 import uts.consumer.config.database.DruidDataSourceConfig;
 import uts.consumer.entity.TradeDetail;
 import uts.consumer.listener.ApplicationFactory;
-import uts.consumer.protocol.Req;
-import uts.consumer.protocol.Resp;
 import uts.consumer.service.TradeDetailService;
 import uts.consumer.utils.Const;
 import uts.consumer.utils.FastJsonConvertUtil;
+import uts.sender.protocol.Req;
+import uts.sender.protocol.Resp;
 
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     private static Logger logger = LoggerFactory.getLogger(DruidDataSourceConfig.class);
