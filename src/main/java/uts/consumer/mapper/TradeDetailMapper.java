@@ -7,14 +7,14 @@ import uts.consumer.entity.TradeDetail;
 
 import java.util.Map;
 
-public interface TradeDetailMapper{
+public interface TradeDetailMapper {
     int deleteByPrimaryKey(String id);
 
     int insert(TradeDetail record);
 
     int insertSelective(TradeDetail record);
 
-    //TradeDetail selectByPrimaryKey(String id);
+    TradeDetail selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(TradeDetail record);
 

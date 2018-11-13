@@ -83,12 +83,18 @@
     oppAccountNo, accountName, accountNo, digest, status, createBy, createTime, updateBy, 
     updateTime
   </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from TRADE_DETAIL
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from TRADE_DETAIL_0
+    delete from TRADE_DETAIL
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="uts.consumer.entity.TradeDetail">
-    insert into TRADE_DETAIL_0 (id, serialno, tradeDate,
+    insert into TRADE_DETAIL (id, serialno, tradeDate,
       dedbitAmount, creditAmount, businessType, 
       balance, oppAccountName, oppAccountNo, 
       accountName, accountNo, digest, 
@@ -102,7 +108,7 @@
       #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="uts.consumer.entity.TradeDetail">
-    insert into TRADE_DETAIL_0
+    insert into TRADE_DETAIL
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -211,7 +217,7 @@
     </trim>
   </insert>
   <update id="updateByExampleSelective" parameterType="map">
-    update TRADE_DETAIL_0
+    update TRADE_DETAIL
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
@@ -270,7 +276,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update TRADE_DETAIL_0
+    update TRADE_DETAIL
     set id = #{record.id,jdbcType=VARCHAR},
       serialno = #{record.serialno,jdbcType=VARCHAR},
       tradeDate = #{record.tradedate,jdbcType=TIMESTAMP},
@@ -293,7 +299,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="uts.consumer.entity.TradeDetail">
-    update TRADE_DETAIL_0
+    update TRADE_DETAIL
     <set>
       <if test="serialno != null">
         serialno = #{serialno,jdbcType=VARCHAR},
@@ -347,7 +353,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="uts.consumer.entity.TradeDetail">
-    update TRADE_DETAIL_0
+    update TRADE_DETAIL
     set serialno = #{serialno,jdbcType=VARCHAR},
       tradeDate = #{tradedate,jdbcType=TIMESTAMP},
       dedbitAmount = #{dedbitamount,jdbcType=DECIMAL},
@@ -367,7 +373,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <insert id="balanceInsert" parameterType="java.util.Map">
+  <insert id="balanceInsert" parameterType="uts.consumer.entity.TradeDetail">
     insert into ${tableName} (id, serialno, tradeDate,
       dedbitAmount, creditAmount, businessType,
       balance, oppAccountName, oppAccountNo,
