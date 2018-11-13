@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="uts.consumer.mapper.TradeDetailMapper">
+  <resultMap id="BaseResultMap" type="uts.consumer.entity.TradeDetail">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="serialno" jdbcType="VARCHAR" property="serialno" />
+    <result column="tradeDate" jdbcType="TIMESTAMP" property="tradedate" />
+    <result column="dedbitAmount" jdbcType="DECIMAL" property="dedbitamount" />
+    <result column="creditAmount" jdbcType="DECIMAL" property="creditamount" />
+    <result column="businessType" jdbcType="VARCHAR" property="businesstype" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="oppAccountName" jdbcType="VARCHAR" property="oppaccountname" />
+    <result column="oppAccountNo" jdbcType="VARCHAR" property="oppaccountno" />
+    <result column="accountName" jdbcType="VARCHAR" property="accountname" />
+    <result column="accountNo" jdbcType="VARCHAR" property="accountno" />
+    <result column="digest" jdbcType="VARCHAR" property="digest" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createBy" jdbcType="VARCHAR" property="createby" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateBy" jdbcType="VARCHAR" property="updateby" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, serialno, tradeDate, dedbitAmount, creditAmount, businessType, balance, oppAccountName, 
+    oppAccountNo, accountName, accountNo, digest, status, createBy, createTime, updateBy, 
+    updateTime
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TRADE_DETAIL_0
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="uts.consumer.entity.TradeDetail">
+    insert into TRADE_DETAIL_0 (id, serialno, tradeDate,
+      dedbitAmount, creditAmount, businessType, 
+      balance, oppAccountName, oppAccountNo, 
+      accountName, accountNo, digest, 
+      status, createBy, createTime, 
+      updateBy, updateTime)
+    values (#{id,jdbcType=VARCHAR}, #{serialno,jdbcType=VARCHAR}, #{tradedate,jdbcType=TIMESTAMP}, 
+      #{dedbitamount,jdbcType=DECIMAL}, #{creditamount,jdbcType=DECIMAL}, #{businesstype,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=DECIMAL}, #{oppaccountname,jdbcType=VARCHAR}, #{oppaccountno,jdbcType=VARCHAR}, 
+      #{accountname,jdbcType=VARCHAR}, #{accountno,jdbcType=VARCHAR}, #{digest,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="uts.consumer.entity.TradeDetail">
+    insert into TRADE_DETAIL_0
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serialno != null">
+        serialno,
+      </if>
+      <if test="tradedate != null">
+        tradeDate,
+      </if>
+      <if test="dedbitamount != null">
+        dedbitAmount,
+      </if>
+      <if test="creditamount != null">
+        creditAmount,
+      </if>
+      <if test="businesstype != null">
+        businessType,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="oppaccountname != null">
+        oppAccountName,
+      </if>
+      <if test="oppaccountno != null">
+        oppAccountNo,
+      </if>
+      <if test="accountname != null">
+        accountName,
+      </if>
+      <if test="accountno != null">
+        accountNo,
+      </if>
+      <if test="digest != null">
+        digest,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createby != null">
+        createBy,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updateby != null">
+        updateBy,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null">
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="tradedate != null">
+        #{tradedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dedbitamount != null">
+        #{dedbitamount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditamount != null">
+        #{creditamount,jdbcType=DECIMAL},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="oppaccountname != null">
+        #{oppaccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="oppaccountno != null">
+        #{oppaccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountno != null">
+        #{accountno,jdbcType=VARCHAR},
+      </if>
+      <if test="digest != null">
+        #{digest,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TRADE_DETAIL_0
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serialno != null">
+        serialno = #{record.serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradedate != null">
+        tradeDate = #{record.tradedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dedbitamount != null">
+        dedbitAmount = #{record.dedbitamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.creditamount != null">
+        creditAmount = #{record.creditamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.businesstype != null">
+        businessType = #{record.businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oppaccountname != null">
+        oppAccountName = #{record.oppaccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppaccountno != null">
+        oppAccountNo = #{record.oppaccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountname != null">
+        accountName = #{record.accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountno != null">
+        accountNo = #{record.accountno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.digest != null">
+        digest = #{record.digest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createby != null">
+        createBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateby != null">
+        updateBy = #{record.updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null">
+        updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TRADE_DETAIL_0
+    set id = #{record.id,jdbcType=VARCHAR},
+      serialno = #{record.serialno,jdbcType=VARCHAR},
+      tradeDate = #{record.tradedate,jdbcType=TIMESTAMP},
+      dedbitAmount = #{record.dedbitamount,jdbcType=DECIMAL},
+      creditAmount = #{record.creditamount,jdbcType=DECIMAL},
+      businessType = #{record.businesstype,jdbcType=VARCHAR},
+      balance = #{record.balance,jdbcType=DECIMAL},
+      oppAccountName = #{record.oppaccountname,jdbcType=VARCHAR},
+      oppAccountNo = #{record.oppaccountno,jdbcType=VARCHAR},
+      accountName = #{record.accountname,jdbcType=VARCHAR},
+      accountNo = #{record.accountno,jdbcType=VARCHAR},
+      digest = #{record.digest,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      createBy = #{record.createby,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      updateBy = #{record.updateby,jdbcType=VARCHAR},
+      updateTime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="uts.consumer.entity.TradeDetail">
+    update TRADE_DETAIL_0
+    <set>
+      <if test="serialno != null">
+        serialno = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="tradedate != null">
+        tradeDate = #{tradedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dedbitamount != null">
+        dedbitAmount = #{dedbitamount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditamount != null">
+        creditAmount = #{creditamount,jdbcType=DECIMAL},
+      </if>
+      <if test="businesstype != null">
+        businessType = #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="oppaccountname != null">
+        oppAccountName = #{oppaccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="oppaccountno != null">
+        oppAccountNo = #{oppaccountno,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        accountName = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountno != null">
+        accountNo = #{accountno,jdbcType=VARCHAR},
+      </if>
+      <if test="digest != null">
+        digest = #{digest,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        updateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="uts.consumer.entity.TradeDetail">
+    update TRADE_DETAIL_0
+    set serialno = #{serialno,jdbcType=VARCHAR},
+      tradeDate = #{tradedate,jdbcType=TIMESTAMP},
+      dedbitAmount = #{dedbitamount,jdbcType=DECIMAL},
+      creditAmount = #{creditamount,jdbcType=DECIMAL},
+      businessType = #{businesstype,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=DECIMAL},
+      oppAccountName = #{oppaccountname,jdbcType=VARCHAR},
+      oppAccountNo = #{oppaccountno,jdbcType=VARCHAR},
+      accountName = #{accountname,jdbcType=VARCHAR},
+      accountNo = #{accountno,jdbcType=VARCHAR},
+      digest = #{digest,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateBy = #{updateby,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <insert id="balanceInsert" parameterType="java.util.Map">
+    insert into ${tableName} (id, serialno, tradeDate,
+      dedbitAmount, creditAmount, businessType,
+      balance, oppAccountName, oppAccountNo,
+      accountName, accountNo, digest,
+      status, createBy, createTime,
+      updateBy, updateTime)
+    values (#{id,jdbcType=VARCHAR}, #{serialno,jdbcType=VARCHAR}, #{tradedate,jdbcType=TIMESTAMP},
+      #{dedbitamount,jdbcType=DECIMAL}, #{creditamount,jdbcType=DECIMAL}, #{businesstype,jdbcType=VARCHAR},
+      #{balance,jdbcType=DECIMAL}, #{oppaccountname,jdbcType=VARCHAR}, #{oppaccountno,jdbcType=VARCHAR},
+      #{accountname,jdbcType=VARCHAR}, #{accountno,jdbcType=VARCHAR}, #{digest,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="balanceSelectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ${tableName}
+    where id = #{id,jdbcType=VARCHAR}
+
+  </select>
+</mapper>
